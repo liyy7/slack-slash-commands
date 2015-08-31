@@ -14,13 +14,13 @@ class CommandHandler(BaseHTTPRequestHandler):
         return self._get_parameters().get(parameter)
 
     def _handle_command(self, command, text):
-        return '{} `{}`'.format(command, text)
+        return '/{} `{}`'.format(command, text)
 
     def do_GET(self):
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
-        command = self._get_parameter('command')
+        command = self._get_parameter('command')[3:]
         text = self._get_parameter('text')
         reply = self._handle_command(command, text)
         if isinstance(reply, str):
