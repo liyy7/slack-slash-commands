@@ -11,7 +11,7 @@ class CommandHandler(BaseHTTPRequestHandler):
         return self.__parameters
 
     def _get_parameter(self, parameter):
-        return self._get_parameters().get(parameter)
+        return self._get_parameters().get(parameter, '')
 
     def _handle_command(self, command, text):
         return '/{} `{}`'.format(command, text)
